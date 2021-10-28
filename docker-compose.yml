@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  netflixpg:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    container_name: 'netflixpg'
+    restart: always 
+    volumes: 
+      - netflexpg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: psuser
+      POSTGRES_PASSWORD: pgpassword
+
+volumes:
+  netflexpg-data:
