@@ -1,15 +1,22 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { User } from '@prisma/client';
 import { UsersService } from './users.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UserRole } from './enum/role.enum';
 
-@Controller('users')
+@Controller()
 export class UsersController {
-  constructor(private usersService: UsersService) {}
-  @Get()
-  findAll() {
-    return this.usersService.findAll();
+  constructor(private service: UsersService) {}
+
+  @Post('create-user')
+  createUser(@Body() data: CreateUserDto): Promise<User> {
+    delete data.passwordConfirm;
+    return this.service.create(data, UserRole.USER);
   }
-  @Get(':id')
-  findById(@Param() params) {
-    return this.usersService.findById(+params.id);
+  @Post('create-admin')
+  createAdmin(@Body() data: CreateUserDto): Promise<User> {
+    delete data.passwordConfirm;
+    return this.service.create(data, UserRole.ADMIN);
   }
 }
+//npm run start:dev//

@@ -11,7 +11,21 @@ datasource db {
 }
 
 model User {
-  usarname String @id
-  password String
-  displayName String
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  role      String   @default("USER") //papel do usuario//
+  status    Boolean  @default(true)
+  password  String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
 }
+//npx prisma migrate dev
+//id        String   @id @default(uuid())
+  // name      String
+  // email     String   @unique
+  // role      String   @default("USER") //papel do usuario//
+  // status    Boolean  @default(true)
+  // password  String
+  // updatedAt DateTime @updatedAt
+  // createdAt DateTime @default(now())

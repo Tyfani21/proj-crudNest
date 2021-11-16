@@ -1,0 +1,23 @@
+/*
+  Warnings:
+
+  - You are about to drop the column `createdAt` on the `User` table. All the data in the column will be lost.
+  - You are about to drop the column `email` on the `User` table. All the data in the column will be lost.
+  - You are about to drop the column `name` on the `User` table. All the data in the column will be lost.
+  - You are about to drop the column `password` on the `User` table. All the data in the column will be lost.
+  - You are about to drop the column `role` on the `User` table. All the data in the column will be lost.
+  - You are about to drop the column `status` on the `User` table. All the data in the column will be lost.
+  - You are about to drop the column `updatedAt` on the `User` table. All the data in the column will be lost.
+
+*/
+-- DropIndex
+DROP INDEX "User_email_key";
+
+-- AlterTable
+ALTER TABLE "User" DROP COLUMN "createdAt",
+DROP COLUMN "email",
+DROP COLUMN "name",
+DROP COLUMN "password",
+DROP COLUMN "role",
+DROP COLUMN "status",
+DROP COLUMN "updatedAt";
