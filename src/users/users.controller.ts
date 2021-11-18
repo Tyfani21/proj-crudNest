@@ -12,7 +12,8 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserRole } from './enum/role.enum';
 import { SimpleGuard } from 'src/auth/simple.guard';
-
+//npm install @types/passport-jwt --save-dev//
+//npm i @nestjs/passport passport @nestjs/jwt passport-jwt//
 @Controller()
 export class UsersController {
   constructor(private service: UsersService) {}
