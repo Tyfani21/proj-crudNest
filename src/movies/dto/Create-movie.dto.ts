@@ -1,13 +1,13 @@
-import { IsString, Length, IsDate, IsUrl, IsNotEmpty } from 'class-validator';
+import { IsString, Length, IsUrl, IsNotEmpty } from 'class-validator';
 export class CreateMovieDto {
   @IsString()
   @Length(2, 100)
   name: string;
-  @IsDate()
-  year: Date;
-  @IsDate()
+  @IsString()
+  year: string;
+  @IsString()
   @IsNotEmpty()
-  length: Date;
+  length: string;
   @IsString()
   @Length(10, 400)
   @IsNotEmpty()

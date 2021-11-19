@@ -7,7 +7,6 @@ import { PrismaService } from 'src/prisma.service';
 import { AuthResponse, LoginDto } from './dto/login.dto';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { UnsubscriptionError } from 'rxjs';
 @Injectable()
 export class AuthService {
   constructor(private db: PrismaService, private jwt: JwtService) {}

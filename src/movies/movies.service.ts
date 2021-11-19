@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { Movie, Prisma } from '@prisma/client';
-
+import { User } from '@prisma/client';
 @Injectable()
 export class MoviesService {
   constructor(private db: PrismaService) {}
@@ -30,5 +30,25 @@ export class MoviesService {
     return {
       message: 'item deletado com sucesso',
     };
+  }
+  async likeMovie(userId: string, movieId: string): Promise<User> {
+    await this.db.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        movies: {
+          connect: {
+            id: movieId,
+          },
+        },
+      },
+    });
+    return this.db.user.findUnique({
+      where: { id: userId },
+      include: {
+        movies: true,
+      },
+    });
   }
 }
